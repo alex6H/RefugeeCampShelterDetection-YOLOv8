@@ -19,12 +19,12 @@ View of a camp around Goma:
 ![image](https://github.com/user-attachments/assets/8a7bee91-38c6-4351-88f7-31513a3630f5)
 
 ## Model
-The model used (best.pt) is a fine tuning of the Yolo8 Nano model trained via Google Colab.
+The model (best.pt) used is a fine tuning of the Yolo8 Nano model trained via Google Colab.
 
 Tests were carried out with the Medium and Small models, which considerably increased training time without providing much higher quality detection. This was judged by visual comparison of the results. The Nano model was chosen for its speed of training compared with the other models.
 
 ## Training dataset
-The model was trained on a dataset including camps in **Mozambique and Chad, but above all on neighbouring camps in DRC around Goma. It is these similar camps that explain the good prediction results in this example.** It is by no means certain that this model will perform as well out of the box in camps other. From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
+The model was trained on a dataset including camps in **Mozambique and Chad, but above all on neighbouring camps in DRC around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in other camps.** From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
 
 It should be noted that the results are good mainly for so-called "informal" shelters (makeshift shelters made of wood and plastic sheeting). This is because the training images contain a huge number of examples of these informal shelters. This dataset is then expanded (via [Albumentations](https://albumentations.ai/)). 
 The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. 
