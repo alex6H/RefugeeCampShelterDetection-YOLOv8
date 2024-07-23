@@ -28,7 +28,10 @@ Tests were carried out with the Medium and Small models, which considerably incr
 The model was trained on a dataset including camps in Mozambique and Chad, but above all on neighbouring camps around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in camps other. From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
 
 It should be noted that the results are good mainly for so-called "informal" shelters (makeshift shelters made of wood and plastic sheeting). This is because the training images contain a huge number of examples of these informal shelters (several thousand). This dataset is then expanded (via [Albumentations](https://albumentations.ai/)). 
-The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. 
+The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. Here below the number of instance, after augmentation, by classes in the training dataset :
+
+![image](https://github.com/user-attachments/assets/6ad3dc13-c5c2-4676-8bcf-ad6884b7f7c3)
+
 
 The training data is taken entirely from drone images with a GSD between 2cm/pixel and 10cm/pixel. Although the process of increasing the data includes a pass that degrades the image quality, this particularity in terms of definition suggests that the model will not perform well on images with a lower resolution.
 
