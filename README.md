@@ -13,51 +13,51 @@ In the script we will then use the [Ultralytics](https://docs.ultralytics.com/) 
 Note that because of the size of the image, the [Slicing Aided Hyper Inference (SAHI)](https://github.com/obss/sahi) library  will be used to cut the image into pieces and submit it to Yolo.
 
 There is a pre work of this script who as note yet be published :
-The model has been trained based on the Yolo8 Nano model with Google Colab (The script has yet to be published). The training data was taken from drone images of camps in Mozambique, Chad and the Democratic Republic of Congo. [Label Studio](https://labelstud.io/) was used to annotate the data and create the training dataset. At first, the annoation were done entirely by hand and then via active learning where the model is continually improved using its own output to refine its future predictions.
+The model has been trained based on the Yolo8 Nano model with Google Colab. The training data was taken from drone images of camps in Mozambique, Chad and the Democratic Republic of Congo. [Label Studio](https://labelstud.io/) was used to annotate the data and create the training dataset. At first, the annotations were done entirely by hand and then via active learning where the model is continually improved using its own output to refine its future predictions.
 
-View of camp around Goma:
+View of a camp around Goma:
 
 ![image](https://github.com/user-attachments/assets/8a7bee91-38c6-4351-88f7-31513a3630f5)
 
 ## Model
-The model used is a fine tuning of the Yolo8 Nano model trained via Google Colab (best.pt). The training script and dataset are yet to publish.
+The model used (best.pt) is a fine tuning of the Yolo8 Nano model trained via Google Colab.
 
-Tests were carried out with the Medium and Small models, which considerably increased training time without providing higher quality detection. This was judged by visual comparison of the results. The Nano model was chosen for its speed of training compared with the other models.
+Tests were carried out with the Medium and Small models, which considerably increased training time without providing much higher quality detection. This was judged by visual comparison of the results. The Nano model was chosen for its speed of training compared with the other models.
 
 ## Training dataset
-The model was trained on a dataset including camps in Mozambique and Chad, but above all on neighbouring camps around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in camps other. From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
+The model was trained on a dataset including camps in Mozambique and Chad, but above all on neighbouring camps in DRC around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in camps other. From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
 
-It should be noted that the results are good mainly for so-called "informal" shelters (makeshift shelters made of wood and plastic sheeting). This is because the training images contain a huge number of examples of these informal shelters (several thousand). This dataset is then expanded (via [Albumentations](https://albumentations.ai/)). 
+It should be noted that the results are good mainly for so-called "informal" shelters (makeshift shelters made of wood and plastic sheeting). This is because the training images contain a huge number of examples of these informal shelters. This dataset is then expanded (via [Albumentations](https://albumentations.ai/)). 
 The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. Here below the number of instance, after augmentation, by classes in the training dataset :
 
 ![image](https://github.com/user-attachments/assets/6ad3dc13-c5c2-4676-8bcf-ad6884b7f7c3)
 
 
-The training data is taken entirely from drone images with a GSD between 2cm/pixel and 10cm/pixel. Although the process of increasing the data includes a pass that degrades the image quality, this particularity in terms of definition suggests that the model will not perform well on images with a lower resolution.
+The training data is taken entirely from drone images with a GSD between 2cm/pixel to 10cm/pixel. Although the process of increasing the data includes a pass that degrades the image quality, this particularity in terms of definition suggests that the model will not perform well on images with a lower resolution (>10cm/pixel).
 
 ## Categories
 When the training datasets were first created, only informal shelters were annotated. 
-. After some thought, several categories were added. Unfortunately, the lack of examples in some of these categories has resulted in a mediocre detection confidence.
+. After some thought, several categories were added. Unfortunately, the lack of examples in some of these categories has resulted in a mediocre detection confidence. The definition of the category and the training dataset need to be improved.
 
 Here are the categories and their definitions:
-* Building: A structure with a complex shape and a solid roof.
+* Building: A structure with a complex shape and a solid roof. Surface mainly above 50m²
 
   ![image](https://github.com/user-attachments/assets/6c9f9d20-9308-42cc-bbe7-8504a2b38747)
 
 
-* Dwelling: A simple, regularly shaped structure with a basic corrugated iron roof, often rusted.
+* Dwelling: A simple, regularly shaped structure with a basic corrugated iron roof, often rusted. Surface mainly between 10 to 50 m²
 
   ![image](https://github.com/user-attachments/assets/4559ec5a-4cba-414e-a085-873d08f87987)
   ![image](https://github.com/user-attachments/assets/d11f7981-f674-40e2-ae6e-1b756024ac67)
 
     
-* Shelter Informal: A small size shelter (few meter square), irregularly shaped construction made with plastic sheeting and a plastic roof.
+* Shelter Informal: A small size shelter (few meter square), irregularly shaped construction made with plastic sheeting and a plastic roof. Surface mainly between 2 to 10 m²
 
   ![image](https://github.com/user-attachments/assets/9e949b63-58ea-4d5d-b7b9-68e5df38f5d6)
   ![image](https://github.com/user-attachments/assets/8dceb4c1-1828-4eb5-80d8-81aefe462b41)
 
     
-* Shelter Formal: A small, rectangular or square construction made with plastic sheeting, often with a corrugated iron roof. This one is tricky because it can be easily confuse with informal shelter used in marketplace. 
+* Shelter Formal: A small, rectangular or square construction made with plastic sheeting, often with a corrugated iron roof. This one is tricky because it can be easily confuse with informal shelter used in marketplace. Surface mainly between 15 to 25 m²
 
   ![image](https://github.com/user-attachments/assets/b6e2e983-e2e8-4836-8b43-4f0c68d1a6a8)
 
@@ -136,4 +136,4 @@ I’ll be glad to collaborate with others on this project. If you have ideas, im
 Thank you for your interest and contributions!
 
 ## Thanks
-Thanks to XXX for having provided a lot of camps images!
+Thanks to Andrea Cippà, siteplanner and drone pilote, for having provided a lot of camps images! Here is a link to his [Youtube Channel]([https://github.com/obss/sahi](https://www.youtube.com/@AndreaCippa-Siteplanning))
