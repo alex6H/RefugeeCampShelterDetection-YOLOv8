@@ -1,12 +1,11 @@
 # Shelters detection of a refugee camp on drone image with YOLOv8
-This project automates counting shelters in a DRC refugee camp to estimate population. A drone's high-def image is analyzed with YOLOv8 by Ultralytics for detecting shelters and other categories. The SAHI library handles large images, and the model is trained on data from various camps. Future work will explore segmentation with models like SAM.
-
+This project automates detection and count of shelters in a refugee camp to estimate the population. A drone's high-def image is analyzed with YOLOv8 for detecting shelters and other categories of camp structure. The model is trained on drone images in Chad, Mozambic and the Democratic Republic of Congo (DRC). Far from perfect, the model and the script provide a good result in shelter detection of similar DRC camps. Still a lot of work need to be done to integrate more example from various country in the training dataset. Future work will explore segmentation with models like SAM.
 
 ![image](https://github.com/user-attachments/assets/894d9ca1-c232-40f2-8915-878fc03e2d04)
 
 ## Objective
 
-The aim is to be able to automate the counting process for shelters in a refugee camp in order to estimate the population. In this case, we are in the Democratic Republic of Congo (DRC), on the outskirts of Goma (North Kivu) in Elohim camp. To carry out this shelter count, a drone was used (in December 2023) to acquire a high-definition image.
+The aim is to be able to automate the counting process for shelters in a refugee camp in order to estimate the population. In this case, we are in DRC, on the outskirts of Goma (North Kivu) in Elohim camp. To carry out this shelter count, a drone was used (in December 2023) to acquire a high-definition image.
 
 In the script we will then use the [Ultralytics](https://docs.ultralytics.com/) framework , which implements Yolov8 in Python. YOLO's primary objective is to detect objects on video. In our case we're going to do it on a raster image, which is just as powerful and very fast. The aim is to detect shelters and locate them with bouding boxes, not to segment them (we need a count, not a a perfect delimitation). The next improvement will be to use bouding boxes to segment objects using a model such as [Segment Anything Model](https://docs.ultralytics.com/models/sam/) but we will explore that later.
 
@@ -28,10 +27,11 @@ Tests were carried out with the Medium and Small models, which considerably incr
 The model was trained on a dataset including camps in Mozambique and Chad, but above all on neighbouring camps in DRC around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in camps other. From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
 
 It should be noted that the results are good mainly for so-called "informal" shelters (makeshift shelters made of wood and plastic sheeting). This is because the training images contain a huge number of examples of these informal shelters. This dataset is then expanded (via [Albumentations](https://albumentations.ai/)). 
-The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. Here below the number of instance, after augmentation, by classes in the training dataset :
+The other categories suffer from much poorer detection due, for the most part, to a lack of training data. For example, vehicles are regularly identified as shelters simply because the level of confidence is far too low in this category due to the lack of data. 
+
+Here below the number of instance, after augmentation, by classes, in the training dataset :
 
 ![image](https://github.com/user-attachments/assets/6ad3dc13-c5c2-4676-8bcf-ad6884b7f7c3)
-
 
 The training data is taken entirely from drone images with a GSD between 2cm/pixel to 10cm/pixel. Although the process of increasing the data includes a pass that degrades the image quality, this particularity in terms of definition suggests that the model will not perform well on images with a lower resolution (>10cm/pixel).
 
@@ -129,11 +129,19 @@ Here are the categories and their definitions:
 
   ![image](https://github.com/user-attachments/assets/2ec2a279-15e8-4143-9726-5fcaf860d5c5)
 
-
+## Improvement and next steps
+As mentioned, there is still considerable work ahead, primarily including:
+- Enhancing the model by incorporating more examples from various countries and categories.
+- Exploring segmentation techniques with models such as SAM.
+- Implementing the script within a QGIS toolbox.
+- Addressing additional minor improvements.
+ 
 ## Contribution
 I’ll be glad to collaborate with others on this project. If you have ideas, improvements, or would like to contribute in any way, please feel free to reach out. I welcome all forms of collaboration.
 
-Thank you for your interest and contributions!
-
 ## Thanks
-Thanks to Andrea Cippà, siteplanner and drone pilote, for having provided a lot of camps images! Here is a link to his [Youtube Channel]([https://github.com/obss/sahi](https://www.youtube.com/@AndreaCippa-Siteplanning))
+Thanks to Andrea Cippà, siteplanner and drone pilote, for having provided a lot of camps images! Here is a link to his [Youtube Channel](https://www.youtube.com/@AndreaCippa-Siteplanning)
+
+--------------------------------------------------------------------------------------------
+
+Thank you for your interest and contributions!
