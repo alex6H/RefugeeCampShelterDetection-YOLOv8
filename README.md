@@ -129,6 +129,9 @@ Here are the categories and their definitions:
 
   ![image](https://github.com/user-attachments/assets/2ec2a279-15e8-4143-9726-5fcaf860d5c5)
 
+## Hardware
+Yolo runs easily on a laptop with standart GPU. For this example, the scipt for infering was run on a NVIDIA T1200 Laptop GPU, 4096MiB without any issue.
+
 ## Improvement and next steps
 As mentioned, there is still considerable work ahead, primarily including:
 - Enhancing the model by incorporating more examples from various countries and categories.
