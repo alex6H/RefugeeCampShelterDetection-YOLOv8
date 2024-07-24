@@ -19,7 +19,7 @@ View of a camp around Goma:
 ![image](https://github.com/user-attachments/assets/8a7bee91-38c6-4351-88f7-31513a3630f5)
 
 ## Model
-The model (best.pt) used is a fine tuning of the Yolo8 Nano model trained via Google Colab.
+The model (best.pt) used is a fine tuning of the [Yolo8 Nano model](https://docs.ultralytics.com/models/yolov8/#supported-tasks-and-modes) trained via Google Colab.
 
 Tests were carried out with the Medium and Small models, which considerably increased training time without providing much higher quality detection. This was judged by visual comparison of the results. The Nano model was chosen for its speed of training compared with the other models.
 
