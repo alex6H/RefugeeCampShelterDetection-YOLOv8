@@ -19,9 +19,23 @@ View of a camp around Goma:
 ![image](https://github.com/user-attachments/assets/8a7bee91-38c6-4351-88f7-31513a3630f5)
 
 ## Model
-The model (best.pt) used is a fine tuning of the [Yolo8 Nano model](https://docs.ultralytics.com/models/yolov8/#supported-tasks-and-modes) trained via Google Colab.
+The model used is a fine tuning of the [Yolo8 Nano model](https://docs.ultralytics.com/models/yolov8/#supported-tasks-and-modes) trained via Google Colab.
 
 Tests were carried out with the Medium and Small models, which considerably increased training time without providing much higher quality detection. This was judged by visual comparison of the results. The Nano model was chosen for its speed of training compared with the other models.
+
+There are two model exports available: Pytorch (best.pt) and Open Neural Network Exchange (.onnx).
+
+## Usage in QGIS
+ONNX can be used directly in QGIS via the [Deepness: Deep Neural Remote Sensing](https://plugins.qgis.org/plugins/deepness/) plugin and the following parameters :
+- Model type should be "Detector". We detecte bouding boxes (we do not have a segmentation model yet)
+- Model file path : path to the .onnx model
+- Tiles overlap should be bigger than the bigest object you want to detecte on the image
+- Detector type : YOLO_Ultralytics
+- Confidence : the treshold for the minimum confidence (between 0 and 1)
+- IoU : [Intersection Over Union](https://pyimagesearch.com/2016/11/07/intersection-over-union-iou-for-object-detection/) to remove overlapping detected objects (between 0 and 1)
+
+Note that your raster unit should be in meter (e.g. : EPSG:3857 - WGS 84 / Pseudo-Mercator). 
+![image](https://github.com/user-attachments/assets/2fe89d36-ba00-4a4c-b9ec-938da7e3c31a)
 
 ## Training dataset
 The model was trained on a dataset including camps in **Mozambique and Chad, but above all on neighbouring camps in DRC around Goma. It is these similar camps that explain the good prediction results in this example. It is by no means certain that this model will perform as well out of the box in other camps.** From one camp to another, the category definitions presented here may no longer be relevant, affecting the quality of detection.
