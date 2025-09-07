@@ -22,6 +22,7 @@ This project automates detection and count of shelters in a refugee camp to esti
 - [Hardware](#hardware)
 - [Improvement and next steps](#improvement-and-next-steps)
 - [Contribution](#contribution)
+- [License](#license)
 - [Thanks](#thanks)
 
 ## Objective
@@ -35,7 +36,7 @@ Note that because of the size of the image, the [Slicing Aided Hyper Inference (
 There is a pre work of this script who as note yet be published :
 The model has been trained based on the Yolo8 Nano model with Google Colab. The training data was taken from drone images of camps in Mozambique, Chad and the Democratic Republic of Congo. [Label Studio](https://labelstud.io/) was used to annotate the data and create the training dataset. At first, the annotations were done entirely by hand and then via active learning where the model is continually improved using its own output to refine its future predictions.
 
-View of a camp around Goma:
+> View of a camp around Goma:
 
 ![image](https://github.com/user-attachments/assets/8a7bee91-38c6-4351-88f7-31513a3630f5)
 
@@ -67,7 +68,7 @@ pip install --upgrade pip
 pip install ultralytics sahi jupyter opencv-python pillow numpy matplotlib
 
 # Download the pre-trained models
-# Models should be in the repository: best.pt and best.onnx
+# Models should be in the repository: best.pt
 ```
 
 ## Quick Start with QGIS
@@ -197,7 +198,26 @@ As mentioned, there is still considerable work ahead, primarily including:
 - Exploring segmentation techniques with models such as SAM.
 - Implementing the script within a QGIS toolbox.
 - Addressing additional minor improvements.
- 
+
+ ## License
+
+This project is licensed under the **MIT License** – see the [LICENSE](LICENSE) file for details.
+
+### License Implications
+- Commercial use permitted  
+- Modification and distribution allowed  
+- Private use permitted  
+- Attribution required  
+- No warranty provided  
+
+### Third-Party Licenses
+This project uses several third-party libraries:  
+- [Ultralytics YOLOv8](https://github.com/ultralytics/ultralytics) – **AGPL-3.0 License**  
+- [SAHI](https://github.com/obss/sahi) – **MIT License**  
+
+**Important:** Commercial users should carefully review Ultralytics’ licensing terms.  
+YOLOv8 is under **AGPL-3.0**, which may require additional licensing for commercial applications.
+
 ## Contribution
 I’ll be glad to collaborate with others on this project. If you have ideas, improvements, or would like to contribute in any way, please feel free to reach out. I welcome all forms of collaboration.
 
