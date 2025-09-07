@@ -1,7 +1,28 @@
 # Shelters detection of a refugee camp on drone image with YOLOv8
+![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)
+![GitHub last commit](https://img.shields.io/github/last-commit/alex6H/RefugeeCampShelterDetection-YOLOv8)
+![GitHub issues](https://img.shields.io/github/issues/alex6H/RefugeeCampShelterDetection-YOLOv8)
+![GitHub stars](https://img.shields.io/github/stars/alex6H/RefugeeCampShelterDetection-YOLOv8)
+![GitHub forks](https://img.shields.io/github/forks/alex6H/RefugeeCampShelterDetection-YOLOv8)
+![Python](https://img.shields.io/badge/python-3.10%2B-blue)
+![Visitors](https://api.visitorbadge.io/api/visitors?path=https%3A%2F%2Fgithub.com%2Falex6H%2FRefugeeCampShelterDetection-YOLOv8&label=Repository%20Views&countColor=%23263759)
+
 This project automates detection and count of shelters in a refugee camp to estimate the population. A drone's high-def image is analyzed with YOLOv8 for detecting shelters and other categories of camp structure. The model is trained on drone images in Chad, Mozambic and the Democratic Republic of Congo (DRC). Far from perfect, the model and the script provide a good result in shelter detection of similar DRC camps. Still a lot of work need to be done to integrate more example from various country in the training dataset. Future work will explore segmentation with models like SAM.
 
 ![image](https://github.com/user-attachments/assets/894d9ca1-c232-40f2-8915-878fc03e2d04)
+
+## Table of Contents
+
+- [Objective](#objective)
+- [Model](#model)
+- [Quick Start with Jupyter](#quick-start-with-jupyter)
+- [Quick Start with QGIS](#quick-start-with-qgis)
+- [Training dataset](#training-dataset)
+- [Categories](#categories)
+- [Hardware](#hardware)
+- [Improvement and next steps](#improvement-and-next-steps)
+- [Contribution](#contribution)
+- [Thanks](#thanks)
 
 ## Objective
 
@@ -25,7 +46,31 @@ Tests were carried out with the Medium and Small models, which considerably incr
 
 There are two model exports available: Pytorch (best.pt) and Open Neural Network Exchange (.onnx).
 
-## Usage in QGIS
+## Quick Start with Jupyter
+
+```bash
+# Clone the repository
+git clone https://github.com/alex6H/RefugeeCampShelterDetection-YOLOv8.git
+cd RefugeeCampShelterDetection-YOLOv8
+
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows
+venv\Scripts\activate
+# macOS/Linux
+source venv/bin/activate
+
+# Install dependencies
+pip install --upgrade pip
+pip install ultralytics sahi jupyter opencv-python pillow numpy matplotlib
+
+# Download the pre-trained models
+# Models should be in the repository: best.pt and best.onnx
+```
+
+## Quick Start with QGIS
 ONNX can be used directly in QGIS via the [Deepness: Deep Neural Remote Sensing](https://plugins.qgis.org/plugins/deepness/) plugin and the following parameters :
 - Model type should be "Detector". We detecte bouding boxes (we do not have a segmentation model yet)
 - Model file path : path to the .onnx model
@@ -144,7 +189,7 @@ Here are the categories and their definitions:
   ![image](https://github.com/user-attachments/assets/2ec2a279-15e8-4143-9726-5fcaf860d5c5)
 
 ## Hardware
-Yolo runs easily on a laptop with standart GPU. For this example, the scipt for infering was run on a NVIDIA T1200 Laptop GPU, 4096MiB without any issue.
+Yolo runs easily on a laptop with standart GPU. For this example, the scipt for infering was run on a NVIDIA T1200 Laptop GPU, 4096MiB and 32gb of RAM without any issue.
 
 ## Improvement and next steps
 As mentioned, there is still considerable work ahead, primarily including:
