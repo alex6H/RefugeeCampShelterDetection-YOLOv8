@@ -1,5 +1,5 @@
 # Shelters detection of a refugee camp on drone image with YOLOv8
-![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg)
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 ![GitHub last commit](https://img.shields.io/github/last-commit/alex6H/RefugeeCampShelterDetection-YOLOv8)
 ![GitHub issues](https://img.shields.io/github/issues/alex6H/RefugeeCampShelterDetection-YOLOv8)
 ![GitHub stars](https://img.shields.io/github/stars/alex6H/RefugeeCampShelterDetection-YOLOv8)
