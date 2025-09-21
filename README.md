@@ -227,3 +227,7 @@ Thanks to Andrea Cippà, siteplanner and drone pilote, for having provided a lot
 --------------------------------------------------------------------------------------------
 
 Thank you for your interest and contributions!
+
+---
+
+⭐ **Star this repository if you find it helpful!**
